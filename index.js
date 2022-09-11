@@ -1,4 +1,4 @@
-import Client from "./lib/client"
+import Client from "./lib/client.js"
 
 export {
     Client
