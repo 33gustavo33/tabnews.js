@@ -33,7 +33,7 @@ O objeto de configuração se parece com isso:
 |**tabnewsUrl**|uma url customizada do tabnews.|string, opcional
 |**log**|se o client deve usar o logger ou não|boolean, opcional
 ---
-### Métodos
+### Métodos do client
 #### Método login
 O metódo login aceita 1 parâmetro obrigatório, que é um objeto de login.
 O objeto de login se parece com isso:
@@ -46,14 +46,18 @@ O objeto de login se parece com isso:
 > **Caso você use um token, você não precisa usar um email e password,
 > caso você não use um token, você precisa usar o email e o password**
 
-esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](https://github.com/33gustavo33/tabnews.js/edit/dev/README.md#clientuserdata-1)
+esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](#clientuserdata)
 
 #### Método destroy
 Este método destroi a conexão do client com a api.
-Para você se conectar novamente você tera que usar o método [login](#metodo-login)
+Para você se conectar novamente você tera que usar o método [login](#método-login)
 
 ---
-
+### Propriedades do client
+Nome|Descrição|tipo
+|--|--|--|
+|**connected**|se o client está conectado|boolean
+|**token**|o token do client|string
 
 ## Tipos de informação
 #### UserData
