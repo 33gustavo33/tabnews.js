@@ -15,7 +15,8 @@
     "url": "git+https://github.com/33gustavo33/tabnews.js.git"
   },
   "keywords": [
-    "tabnews"
+    "tabnews",
+    "tabnews.js"
   ],
   "author": "Gustavo33",
   "license": "MIT",
