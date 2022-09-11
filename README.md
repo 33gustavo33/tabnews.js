@@ -1,4 +1,3 @@
-
 # tabnews.js
 
 Uma biblioteca javascript para interagir com a API do [Tabnews](https://tabnews.com.br)
@@ -10,8 +9,8 @@ yarn add tabnews.js
 ```
 ## Exemplo de uso
 ```js
-const tabnewsJs = require("tabnews.js")
-const client = new tabnewsJs.Client()
+import { Client } from "tabnews.js"
+const client = new Client()
 
 client.login({
     email: "example@example.com",
@@ -22,8 +21,7 @@ client.login({
     console.log(`Logado na conta ${user.username} com o token ${user.token}`)
 }).catch(console.error)
 ```
-# Documentação
-
+# Documentação(Não está pronta.)
 ## Client
 #### Construtor
 O constructor da classe Client aceita 1 parâmetro opcional, que é um objeto de configuração

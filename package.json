@@ -1,6 +1,10 @@
 {
   "name": "tabnews.js",
+<<<<<<< HEAD
   "version": "1.0.2",
+=======
+  "version": "1.0.1",
+>>>>>>> e87acbba1a46f66446d34267360089dca574cea6
   "description": "Uma biblioteca javascript para interagir com a API do tabnews",
   "main": "index.js",
   "type": "module",
