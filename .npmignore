@@ -106,4 +106,8 @@ dist
 # TernJS port file
 .tern-port
 
+img/
+
+LICENSE
+
 tests-config.js
