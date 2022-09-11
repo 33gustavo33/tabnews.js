@@ -9,8 +9,8 @@ yarn add tabnews.js
 ```
 ## Exemplo de uso
 ```js
-const tabnewsJs = require("tabnews.js")
-const client = new tabnewsJs.Client()
+import { Client } from "tabnews.js"
+const client = new Client()
 
 client.login({
     email: "example@example.com",
