@@ -1,8 +1,10 @@
-# tabnews.js
-
+<div align="center">
+    <h1>Tabnews.js</h1>
+    <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.js" />
+</div><br><br>
 Uma biblioteca javascript para interagir com a API do [Tabnews](https://tabnews.com.br)
-## Instalação
 
+## Instalação
 ```sh-session
 npm install tabnews.js
 yarn add tabnews.js
