@@ -1,6 +1,6 @@
 {
   "name": "tabnews.js",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Uma biblioteca javascript para interagir com a API do tabnews",
   "main": "index.js",
   "type": "module",
@@ -25,9 +25,9 @@
   },
   "homepage": "https://github.com/33gustavo33/tabnews.js#readme",
   "dependencies": {
-    "node-fetch": "^3.2.10"
+    "node-fetch": "3.2.10"
   },
   "devDependencies": {
-    "jest": "^29.0.3"
+    "jest": "29.0.3"
   }
 }
