@@ -110,6 +110,6 @@ dist
 
 img/
 
-LICENSE
+tests/
 
-tests-config.js
+jest.config.js
