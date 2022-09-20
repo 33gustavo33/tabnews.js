@@ -3,9 +3,9 @@
     <img src="https://img.shields.io/badge/npm-v1.1.0-blue?style=for-the-badge" />
     <img src="https://img.shields.io/github/license/33gustavo33/tabnews.js?style=for-the-badge" />
     <img src="http://img.shields.io/static/v1?label=STATUS&message=DESENVOLVIMENTO&color=GREEN&style=for-the-badge" />
-</div><br><br>
-
-Uma biblioteca javascript para interagir com a API do [Tabnews](https://tabnews.com.br)
+</div><br><br
+              
+Uma biblioteca javascript feita para interagir com a API do [Tabnews](https://tabnews.com.br) 
 
 ## Instalação
 ```sh-session
@@ -320,3 +320,14 @@ o evento watcherUpdate é disparado quando um [Watcher](#watcher) faz um update,
 <watcher>.on("watcherUpdate", (data) => { console.log(data) })
 ```
 </details>
+
+# Problemas?
+Caso você tenha um problema ou não entenda algo da documentação, não hesite em abrir uma issue ou entrar no [discord do TabNews](https://discord.gg/usQY5vwXer)
+
+<p align="center">
+ <picture bottom="10px">
+   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/33gustavo33/33gustavo33/master/tabnews.js-light.png" width="190" height="190">
+   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/33gustavo33/33gustavo33/master/tabnews.js-dark.png" width="190" height="190">
+   <img alt="Tabnews.js - Um biblioteca javascript para interagir com o TabNews" src="https://raw.githubusercontent.com/33gustavo33/33gustavo33/master/tabnews.js-dark.png" width="190" height="190">
+ </picture>
+</p>
