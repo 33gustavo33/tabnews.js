@@ -1,7 +1,8 @@
 <div align="center">
-    <h1>Tabnews.js</h1>
-    <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.jsbega" />
-    <img src="https://img.shields.io/badge/npm-v1.1.0-blue" />
+    <h1>Tabnews.js  <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.jsbega" /></h1>
+    <img src="https://img.shields.io/badge/npm-v1.1.0-blue?style=for-the-badge" />
+    <img src="https://img.shields.io/github/license/33gustavo33/tabnews.js?style=for-the-badge" />
+    <img src="http://img.shields.io/static/v1?label=STATUS&message=DESENVOLVIMENTO&color=GREEN&style=for-the-badge" />
 </div><br><br>
 
 Uma biblioteca javascript para interagir com a API do [Tabnews](https://tabnews.com.br)
@@ -26,7 +27,7 @@ client.login({
 }).catch(console.error)
 ```
 # Documentação(Não está pronta.)
-Alerta: recomendo ficar com a todas as abas abertas também se for ler as docs!
+Alerta: recomendo expandir tudo caso for ler as docs!
 <details><summary><h2>Classe Client(clique para expandir)</h2></summary>
 
 ## Eventos: [ready](#ready), [destroyed](#destroyed)
@@ -177,12 +178,9 @@ Pârametros:
 ## UserManager
 Um UserManager, é responsavel por gerenciar o usuário do client.
 Através dele você vai consegur obter o usuário do client, editar o usuário do client, etc... <br>
-A seguir estão os metodos de um UserManager
+A seguir estão os metodos e propriedades de um UserManager
 ### Método get
-O método get obtém da memoria o UserData do Client.
-Esse método retorna um [ClientUserData](#clientuserdata)
-### Método updateInfo
-O método updateInfo atualiza a informação do Client.
+O método get atualiza o usuário do Client.
 Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](#clientuserdata)
 ### Método edit
 Este método edita o usuário do client, ele aceita 1 pârametro que é um objeto, o objeto se parece com isso:
@@ -199,6 +197,19 @@ Pârametros:
 |--|--|--|
 |observeWhat|em que o watcher deve assistir por mudanças|não, o padrão é ele assistir por todos.
 |ms|o tempo que o watcher vai procurar por mudanças(em milisegundos)|não, o padrão é 2 minutos e 5 segundos
+
+### Propriedades de um UserManager
+|Nome|Descrição|tipo
+|--|--|--|
+|**email**|o email do client|string
+|**token**|o token do client|string
+|**id**|o id do client|string
+|**username**|o username do client|string
+|**features**|as features do client|array
+|**tabcoins**|a quantidade de tabcoins do client|number
+|**tabcash**|a quantidade de tabcash do client|number
+|**created_at**|quando que o client foi criado|Date
+|**updated_at**|ultima vez que o client foi modificado|Date
 
 ---
 ## StatusManager
