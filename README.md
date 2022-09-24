@@ -219,23 +219,17 @@ Através dele você vai obter o status do tabnews. <br>
 ### Método get
 o método get obtém o [status do tabnews](https://www.tabnews.com.br/status).
 Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [Status]()
-### Método watch
-o método watch começa a assistir o status, retornando um [Watcher](#classe-watcherclique-para-expandir).
-Pârametros:
-|Nome|Descrição|obrigatório
-|--|--|--|
-|ms|o tempo que o watcher vai procurar por mudanças(em milisegundos)|não, o padrão é 2 minutos e 5 segundos
 </details>
 <details><summary><h2>Classe Watcher(clique para expandir)</h2></summary>
 
-Um Watcher, é uma classe que assiste por mudanças um Conteúdo/Usuário/Status.<br>
+Um Watcher, é uma classe que assiste por mudanças um Conteúdo/Usuário.<br>
 Todos os Watchers são iguais, a única coisa que muda é o que ele assiste. <br>
 Eventos do watcher: [watcherUpdate](#watcherupdate)
 ## Métodos de um watcher
 ### Método start
-o método start inicia o watcher, e faz ele começar a assistir o Conteúdo/usuário/status.
+o método start inicia o watcher, e faz ele começar a assistir o Conteúdo/usuário.
 ### Método destroy
-o método destroy destrói o Watcher, ou seja, para de assistir ao Conteúdo/usuário/status.
+o método destroy destrói o Watcher, ou seja, para de assistir ao Conteúdo/usuário.
 Você pode iniciar novamente o watcher pelo método start.
 </details>
 <details><summary><h2>Estruturas de dados(clique para expandir)</h2></summary>
