@@ -1,4 +1,4 @@
-import {user, admin, waitForClientsToConnect, postContent, clearContents, getCache, deleteContent} from "../orchestrator.js"
+import {admin, waitForClientsToConnect, postContent, clearContents, getCache, deleteContent} from "../orchestrator.js"
 
 beforeAll(async () => {
     await waitForClientsToConnect()
@@ -7,7 +7,7 @@ beforeAll(async () => {
 describe("Conteúdos do client", () => {
     test("Postar conteúdos", async () => {
         const [content1, content2] = await postContent({title: "Olá", body: "Mundo!", customSlug: "test-contents-post"})
-
+        
         expect(content1.status).toBe("published")
         expect(content2.status).toBe("published")
         expect(content1.body).toBe("Mundo!")
@@ -17,7 +17,7 @@ describe("Conteúdos do client", () => {
     test("Obter conteúdo", async () => {
         const [content1] = getCache().contents
 
-        const contentFetched = await admin.contents.get(content1.owner.username, content1.slug).catch(() => {})
+        const contentFetched = await admin.contents.get(content1.owner.username, content1.slug)
 
         expect(content1).toEqual(contentFetched)
     })
@@ -25,7 +25,7 @@ describe("Conteúdos do client", () => {
     test("Editar conteúdos", async () => {
         const [content1] = getCache().contents
 
-        const contentEdited = await admin.contents.edit(content1.owner.username, content1.slug, {body: "Mundo?"}).catch(() => {})
+        const contentEdited = await admin.contents.edit(content1.owner.username, content1.slug, {body: "Mundo?"})
 
         expect(content1).not.toEqual(contentEdited)
         expect(content1.slug).toBe(contentEdited.slug)
@@ -34,7 +34,7 @@ describe("Conteúdos do client", () => {
     test("Deletar conteúdos", async () => {
         const [content1] = getCache().contents
 
-        const contentDeleted = await deleteContent(content1).catch(() => {})
+        const contentDeleted = await deleteContent(content1)
         
         expect(content1.slug).toBe(contentDeleted.slug)
         expect(content1.status).toBe("published")

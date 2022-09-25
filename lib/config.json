@@ -1,5 +1,6 @@
 {
     "tabnewsUrl": "https://www.tabnews.com.br/",
     "log": true,
+    "debug": false,
     "customAgentUser": "default"
 }

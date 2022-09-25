@@ -9,7 +9,8 @@ const config = {
 const retryTime = 1000
 
 const cache = {
-    contents: []
+    contents: [],
+    contentsDeleted: []
 }
 
 const user = new Client(config) //Normal client
@@ -36,15 +37,18 @@ function waitForClientsToConnect(){
 }
 
 async function postContent(content){
-    const content1 = await admin.contents.post(content).catch(() => {})
-    const content2 = await user.contents.post(content).catch(() => {})
+    const content1 = await admin.contents.post(content)
+    const content2 = await user.contents.post(content)
 
     cache.contents.push(content1, content2)
     return [content1, content2]
 }
 
 function deleteContent(content){
-    return admin.contents.delete(content.owner.username, content.slug).catch(() => {})
+    if(cache.contentsDeleted.includes(content.id)) return
+    cache.contentsDeleted.push(content.id)
+
+    return admin.contents.delete(content.owner.username, content.slug)
 }
 
 async function clearContents(){
@@ -56,6 +60,7 @@ async function clearContents(){
     }
 
     cache.contents = []
+    cache.contentsDeleted = []
 }
 
 function getCache(){

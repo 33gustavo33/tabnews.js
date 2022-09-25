@@ -113,3 +113,5 @@ img/
 tests/
 
 jest.config.js
+
+examples/
