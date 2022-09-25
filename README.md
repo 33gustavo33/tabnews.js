@@ -291,6 +291,28 @@ Retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Re
 #### Método fetchChildren
 O método fetchChildren obtém as respostas do conteúdo atual.
 Retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um Array de [Content](#content)
+#### Método edit
+Este método edita o conteúdo, ele aceita 1 parâmetro obrigatório, sendo ele:
+|content|o que vai ser alterado|
+|--|--|
+
+o pârametro content é um objeto, as propriedades desse objeto estão listadas abaixo:
+|Nome|Descrição|obrigatório|Efeito
+|--|--|--|--|
+|title|o título do conteúdo|não obrigatório|adiciona um título ao conteúdo|
+|body|o corpo do conteúdo, você pode usar markdown aqui nesse campo|não obrigatório|adiciona texto ao conteúdo|
+|sourceUrl|a url da fonte|não obrigatório|adiciona uma fonte ao conteúdo|
+
+Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [Content](#content)
+#### Método delete
+O método delete deleta o conteúdo.
+Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [Content](#content)
+#### Método upvote e downvote
+os Métodos upvote e downvote não tem nenhum parâmetro. <br>
+Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um objeto parecido com isso:
+|Nome|Descrição|
+|--|--|
+|tabcoins|O numero de tabcoins que o contéudo ficou depois do upvote/downvote|
 </details>
 
 <details><summary><h2>Eventos(clique para expandir)</h2></summary>
