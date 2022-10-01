@@ -1,12 +1,12 @@
-import {user, admin, waitForClientsToConnect} from "../orchestrator.js"
+import { user, admin, waitForClientsToConnect } from "../orchestrator.js";
 
 beforeAll(async () => {
-    await waitForClientsToConnect()
-})
+  await waitForClientsToConnect();
+});
 
 describe("Conexão do client", () => {
-    test("Verificando os estados da property .connected", () => {
-        expect(user.connected).toBe(true)
-        expect(admin.connected).toBe(true)
-    })
-})
+  test("Verificando os estados da property .connected", () => {
+    expect(user.connected).toBe(true);
+    expect(admin.connected).toBe(true);
+  });
+});

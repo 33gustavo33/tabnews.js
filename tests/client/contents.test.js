@@ -1,47 +1,58 @@
-import {admin, waitForClientsToConnect, postContent, clearContents, getCache, deleteContent} from "../orchestrator.js"
+import {
+  admin,
+  waitForClientsToConnect,
+  postContent,
+  clearContents,
+  getCache,
+  deleteContent,
+} from "../orchestrator.js";
 
 beforeAll(async () => {
-    await waitForClientsToConnect()
-})
+  await waitForClientsToConnect();
+});
 
 describe("Conteúdos do client", () => {
-    test("Postar conteúdos", async () => {
-        const [content1, content2] = await postContent({title: "Olá", body: "Mundo!", customSlug: "test-contents-post"})
-        
-        expect(content1.status).toBe("published")
-        expect(content2.status).toBe("published")
-        expect(content1.body).toBe("Mundo!")
-        expect(content2.body).toBe("Mundo!")
-    })
+  test("Postar conteúdos", async () => {
+    const [content1, content2] = await postContent({
+      title: "Olá",
+      body: "Mundo!",
+      customSlug: "test-contents-post",
+    });
 
-    test("Obter conteúdo", async () => {
-        const [content1] = getCache().contents
+    expect(content1.status).toBe("published");
+    expect(content2.status).toBe("published");
+    expect(content1.body).toBe("Mundo!");
+    expect(content2.body).toBe("Mundo!");
+  });
 
-        const contentFetched = await admin.contents.get(content1.owner.username, content1.slug)
+  test("Obter conteúdo", async () => {
+    const [content1] = getCache().contents;
 
-        expect(content1).toEqual(contentFetched)
-    })
+    const contentFetched = await admin.contents.get(content1.owner.username, content1.slug);
 
-    test("Editar conteúdos", async () => {
-        const [content1] = getCache().contents
+    expect(content1).toEqual(contentFetched);
+  });
 
-        const contentEdited = await admin.contents.edit(content1.owner.username, content1.slug, {body: "Mundo?"})
+  test("Editar conteúdos", async () => {
+    const [content1] = getCache().contents;
 
-        expect(content1).not.toEqual(contentEdited)
-        expect(content1.slug).toBe(contentEdited.slug)
-    })
+    const contentEdited = await admin.contents.edit(content1.owner.username, content1.slug, { body: "Mundo?" });
 
-    test("Deletar conteúdos", async () => {
-        const [content1] = getCache().contents
+    expect(content1).not.toEqual(contentEdited);
+    expect(content1.slug).toBe(contentEdited.slug);
+  });
 
-        const contentDeleted = await deleteContent(content1)
-        
-        expect(content1.slug).toBe(contentDeleted.slug)
-        expect(content1.status).toBe("published")
-        expect(contentDeleted.status).toBe("deleted")
-    })
-})
+  test("Deletar conteúdos", async () => {
+    const [content1] = getCache().contents;
+
+    const contentDeleted = await deleteContent(content1);
+
+    expect(content1.slug).toBe(contentDeleted.slug);
+    expect(content1.status).toBe("published");
+    expect(contentDeleted.status).toBe("deleted");
+  });
+});
 
 afterAll(async () => {
-    await clearContents()
-})
+  await clearContents();
+});
