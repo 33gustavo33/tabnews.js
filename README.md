@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Tabnews.js  <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.jsbega" /></h1>
+    <h1>Tabnews.js  <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.js" /></h1>
     <img src="https://img.shields.io/badge/version-v1.1.0-blue?style=for-the-badge" />
     <img src="https://img.shields.io/github/license/33gustavo33/tabnews.js?style=for-the-badge" />
     <img src="http://img.shields.io/static/v1?label=STATUS&message=DESENVOLVIMENTO&color=GREEN&style=for-the-badge" />
