@@ -1,9 +1,12 @@
 <div align="center">
-    <h1>Tabnews.js</h1>
-    <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.js" />
-</div><br><br>
-
-Uma biblioteca javascript para interagir com a API do [Tabnews](https://tabnews.com.br)
+    <h1>Tabnews.js  <img src="https://visitor-badge.glitch.me/badge?page_id=tabnews.js" /></h1>
+    <img src="https://img.shields.io/badge/version-v1.1.0-blue?style=for-the-badge" />
+    <img src="https://img.shields.io/github/license/33gustavo33/tabnews.js?style=for-the-badge" />
+    <img src="http://img.shields.io/static/v1?label=STATUS&message=DESENVOLVIMENTO&color=GREEN&style=for-the-badge" />
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" />
+</div><br><br
+              
+Uma biblioteca javascript feita para interagir com a API do [Tabnews](https://tabnews.com.br) 
 
 ## Instalação
 ```sh-session
@@ -25,9 +28,10 @@ client.login({
 }).catch(console.error)
 ```
 # Documentação(Não está pronta.)
+Alerta: recomendo expandir tudo caso for ler as docs!
 <details><summary><h2>Classe Client(clique para expandir)</h2></summary>
 
-Alerta: recomendo ficar com a [aba estrutura de dados](#estruturas-de-dadosclique-para-expandir) aberta também se for ler as docs!
+## Eventos: [ready](#ready), [destroyed](#destroyed)
 ## Construtor
 O constructor da classe Client aceita 1 parâmetro opcional, que é um objeto de configuração
 O objeto de configuração se parece com isso:
@@ -35,6 +39,9 @@ O objeto de configuração se parece com isso:
 |--|--|--|
 |**tabnewsUrl**|uma url customizada do tabnews.|string, opcional
 |**log**|se o client deve usar o logger ou não|boolean, opcional
+|**customAgentUser**|um agent user customizado pro client, use o nome do seu projeto aqui!|string, opcional
+|**debug**|se o client deve usar o modo debug ou não(não é recomendado usar)|boolean, opcional
+
 ---
 ## Métodos do client
 ### Método login
@@ -49,11 +56,12 @@ O objeto de login se parece com isso:
 > **Caso você use um token, você não precisa usar um email e password,
 > caso você não use um token, você precisa usar o email e o password**
 
-esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](#clientuserdata)
+esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](#clientuserdata), ele também emite o evento [ready](#ready)
 
 ### Método destroy
 Este método destroi a conexão do client com a api.
 Para você se conectar novamente você tera que usar o método [login](#método-login)
+ele também emite o evento [destroyed](#destroyed)
 
 ---
 ## Propriedades do client
@@ -128,6 +136,16 @@ Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/
 |--|--|
 |tabcoins|O numero de tabcoins que o contéudo ficou depois do upvote/downvote|
 
+### Método watch
+o método watch começa a assistir um contéudo, retornando um [Watcher](#classe-watcherclique-para-expandir).
+Pârametros:
+|Nome|Descrição|obrigatório
+|--|--|--|
+|author|o autor do conteúdo que ele vai assistir.|sim
+|slug|o slug do conteúdo que ele vai assistir.|sim
+|observeWhat|em que o watcher deve assistir por mudanças|não, o padrão é ele assistir por todos.
+|ms|o tempo que o watcher vai procurar por mudanças(em milisegundos)|não, o padrão é 2 minutos e 5 segundos
+
 ---
 ## UsersManager
 Um UsersManager, como o nome já diz é responsavel por gerenciar os usuários.
@@ -149,16 +167,21 @@ Pârametros:
 
 Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um Array de [Contents](#content).
 
+### Método watch
+o método watch começa a assistir um usuário, retornando um [Watcher](#classe-watcherclique-para-expandir).
+Pârametros:
+|Nome|Descrição|obrigatório
+|--|--|--|
+|username|o username do usuário que ele vai assistir.|sim
+|observeWhat|em que o watcher deve assistir por mudanças|não, o padrão é ele assistir por todos.
+|ms|o tempo que o watcher vai procurar por mudanças(em milisegundos)|não, o padrão é 2 minutos e 5 segundos
 ---
 ## UserManager
 Um UserManager, é responsavel por gerenciar o usuário do client.
 Através dele você vai consegur obter o usuário do client, editar o usuário do client, etc... <br>
-A seguir estão os metodos de um UserManager
+A seguir estão os metodos e propriedades de um UserManager
 ### Método get
-O método get obtém da memoria o UserData do Client.
-Esse método retorna um [ClientUserData](#clientuserdata)
-### Método updateInfo
-O método updateInfo atualiza a informação do Client.
+O método get atualiza o usuário do Client.
 Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](#clientuserdata)
 ### Método edit
 Este método edita o usuário do client, ele aceita 1 pârametro que é um objeto, o objeto se parece com isso:
@@ -168,6 +191,27 @@ Este método edita o usuário do client, ele aceita 1 pârametro que é um objet
 
 Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [ClientUserData](#clientuserdata)
 
+### Método watch
+o método watch começa a assistir o usuário do client, retornando um [Watcher](#classe-watcherclique-para-expandir).
+Pârametros:
+|Nome|Descrição|obrigatório
+|--|--|--|
+|observeWhat|em que o watcher deve assistir por mudanças|não, o padrão é ele assistir por todos.
+|ms|o tempo que o watcher vai procurar por mudanças(em milisegundos)|não, o padrão é 2 minutos e 5 segundos
+
+### Propriedades de um UserManager
+|Nome|Descrição|tipo
+|--|--|--|
+|**email**|o email do client|string
+|**token**|o token do client|string
+|**id**|o id do client|string
+|**username**|o username do client|string
+|**features**|as features do client|array
+|**tabcoins**|a quantidade de tabcoins do client|number
+|**tabcash**|a quantidade de tabcash do client|number
+|**created_at**|quando que o client foi criado|Date
+|**updated_at**|ultima vez que o client foi modificado|Date
+
 ---
 ## StatusManager
 Um StatusManager, é responsavel por gerenciar o status do tabnews
@@ -176,7 +220,18 @@ Através dele você vai obter o status do tabnews. <br>
 o método get obtém o [status do tabnews](https://www.tabnews.com.br/status).
 Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [Status]()
 </details>
+<details><summary><h2>Classe Watcher(clique para expandir)</h2></summary>
 
+Um Watcher, é uma classe que assiste por mudanças um Conteúdo/Usuário.<br>
+Todos os Watchers são iguais, a única coisa que muda é o que ele assiste. <br>
+Eventos do watcher: [watcherUpdate](#watcherupdate)
+## Métodos de um watcher
+### Método start
+o método start inicia o watcher, e faz ele começar a assistir o Conteúdo/usuário.
+### Método destroy
+o método destroy destrói o Watcher, ou seja, para de assistir ao Conteúdo/usuário.
+Você pode iniciar novamente o watcher pelo método start.
+</details>
 <details><summary><h2>Estruturas de dados(clique para expandir)</h2></summary>
 
 # Tipos de informação
@@ -236,4 +291,60 @@ Retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Re
 #### Método fetchChildren
 O método fetchChildren obtém as respostas do conteúdo atual.
 Retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um Array de [Content](#content)
+#### Método edit
+Este método edita o conteúdo, ele aceita 1 parâmetro obrigatório, sendo ele:
+|content|o que vai ser alterado|
+|--|--|
+
+o pârametro content é um objeto, as propriedades desse objeto estão listadas abaixo:
+|Nome|Descrição|obrigatório|Efeito
+|--|--|--|--|
+|title|o título do conteúdo|não obrigatório|adiciona um título ao conteúdo|
+|body|o corpo do conteúdo, você pode usar markdown aqui nesse campo|não obrigatório|adiciona texto ao conteúdo|
+|sourceUrl|a url da fonte|não obrigatório|adiciona uma fonte ao conteúdo|
+
+Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [Content](#content)
+#### Método delete
+O método delete deleta o conteúdo.
+Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um [Content](#content)
+#### Método upvote e downvote
+os Métodos upvote e downvote não tem nenhum parâmetro. <br>
+Esse método retorna uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) contendo um objeto parecido com isso:
+|Nome|Descrição|
+|--|--|
+|tabcoins|O numero de tabcoins que o contéudo ficou depois do upvote/downvote|
 </details>
+
+<details><summary><h2>Eventos(clique para expandir)</h2></summary>
+
+Aqui estão os eventos do tabnews.js, você pode escutar eles com:
+```js
+<client ou watcher>.on("Nome do evento", (data) => {})
+```
+### Ready
+O evento ready é disparado quando o [client](#classe-clientclique-para-expandir) faz login no tabnews, ele traz consigo um [ClientUserData](#clientuserdata)
+```js
+<client>.on("ready", (clientUserData) => { console.log(clientUserData) })
+```
+### Destroyed
+O evento destroyed é disparado quando o [client](#classe-clientclique-para-expandir) é destruído, ele traz consigo um [ClientUserData](#clientuserdata)
+```js
+<client>.on("destroyed", (clientUserData) => { console.log(clientUserData) })
+```
+### WatcherUpdate
+o evento watcherUpdate é disparado quando um [Watcher](#watcher) faz um update, ele traz consigo uma informação variada dependendo de o que você está assistindo.
+```js
+<watcher>.on("watcherUpdate", (data) => { console.log(data) })
+```
+</details>
+
+# Problemas?
+Caso você tenha um problema ou não entenda algo da documentação, não hesite em abrir uma issue ou entrar no [discord do TabNews](https://discord.gg/usQY5vwXer)
+
+<p align="center">
+ <picture bottom="10px">
+   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/33gustavo33/33gustavo33/master/tabnews.js-light.png" width="190" height="190">
+   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/33gustavo33/33gustavo33/master/tabnews.js-dark.png" width="190" height="190">
+   <img alt="Tabnews.js - Um biblioteca javascript para interagir com o TabNews" src="https://raw.githubusercontent.com/33gustavo33/33gustavo33/master/tabnews.js-dark.png" width="190" height="190">
+ </picture>
+</p>

@@ -1,5 +1,11 @@
-import Client from "./lib/client.js"
+import Client from "./lib/client.js";
+import REST from "./lib/api/Rest.js";
+import Routes from "./lib/api/Routes.js";
 
-export {
-    Client
-}
+export { Client, REST, Routes };
+
+export default {
+  Client,
+  REST,
+  Routes,
+};
